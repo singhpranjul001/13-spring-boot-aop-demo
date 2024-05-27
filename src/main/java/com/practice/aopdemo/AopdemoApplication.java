@@ -24,11 +24,22 @@ public class AopdemoApplication {
 	private void demoTheBeforeAdvice(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
 
 		//call the business method
-		theAccountDAO.addAccount();
+		Account myAccount = new Account();
+		theAccountDAO.addAccount(myAccount, true);
+		theAccountDAO.doWork();
+
+		//call the accountDAO getter/setter methods
+		theAccountDAO.setName("Pranjul");
+		theAccountDAO.setServiceCode("Gold");
+
+		String name=theAccountDAO.getName();
+		String code= theAccountDAO.getServiceCode();
+
+
 
 		//call the membership business method
 		theMembershipDAO.addSillyMember();
-
+		theMembershipDAO.goToSleep();
 	}
 
 }
